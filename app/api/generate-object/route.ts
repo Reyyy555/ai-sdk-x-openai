@@ -7,11 +7,12 @@ const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 });
 
-const productSchema = z.object({
-	name: z.string().describe("Name of the product"),
-	description: z.string().describe("Description of the product"),
-	price: z.number().describe("Price in USD"),
-	features: z.array(z.string()).describe("List of product features"),
+const weatherSchema = z.object({
+	name: z.string().describe("Name of the city"),
+	description: z.string().describe("Description of the city"),
+	temperature: z.number().describe("Temperature in Celsius"),
+	humidity: z.number().describe("Humidity in percentage"),
+	windSpeed: z.number().describe("Wind speed in meters per second"),
 });
 
 export async function POST(req: Request) {
@@ -25,10 +26,10 @@ export async function POST(req: Request) {
 			text: {
 				format: {
 					type: "json_schema",
-					...zodResponseFormat(productSchema, "product_response").json_schema,
+					...zodResponseFormat(weatherSchema, "weather_response").json_schema,
 				} as ResponseFormatTextConfig,
 			},
-			input: prompt || "create a product",
+			input: prompt || "What is the weather like in Dhaka?",
 		});
 
 		const responseStream = new ReadableStream({
