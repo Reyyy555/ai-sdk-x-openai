@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useObject } from "@ai-sdk/react"
+import { experimental_useObject as useObject } from "@ai-sdk/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,7 +12,7 @@ export default function Home() {
   const [prompt, setPrompt] = useState("Messages during finals week.")
 
   // Use the useObject hook with a custom API endpoint
-  const { object, isLoading, error, submitObject } = useObject({
+  const { object, isLoading, error, submit } = useObject({
     api: "/api/generate-object",
     id: "notifications-generator",
   })
@@ -21,7 +21,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    submitObject({ prompt })
+    submit({ prompt })
   }
 
   return (
