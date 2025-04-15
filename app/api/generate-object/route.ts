@@ -18,41 +18,52 @@ export async function POST(req: Request) {
 	try {
 		const { prompt } = await req.json();
 
-		const response = await openai.responses.parse({
+		const stream = await openai.responses.create({
 			model: "gpt-4o",
 			tools: [{ type: "web_search_preview" }],
+			stream: true,
 			text: {
 				format: {
 					type: "json_schema",
 					...zodResponseFormat(productSchema, "product_response").json_schema,
 				} as ResponseFormatTextConfig,
 			},
-			input: [
-				{
-					role: "system",
-					content:
-						"You are a product generator. Generate a product based on the user description.",
-				},
-				{
-					role: "user",
-					content: prompt,
-				},
-			],
+			input: prompt || "create a product",
 		});
 
-		const message = response.output_parsed;
-		if (message) {
-			console.log(message);
-		} else {
-			console.log(message);
-		}
+		const responseStream = new ReadableStream({
+			async start(controller) {
+				try {
+					for await (const event of stream) {
+						if (
+							event.type === "response.output_text.delta" ||
+							event.type === "response.refusal.delta"
+						) {
+							const chunk = event.delta;
+							controller.enqueue(new TextEncoder().encode(chunk));
+						} else if (event.type === "response.failed") {
+							controller.enqueue(
+								new TextEncoder().encode(`\nError: ${event.response.error}`),
+							);
+						} else if (event.type === "response.completed") {
+							controller.close();
+						}
+					}
+				} catch (err) {
+					controller.error(err);
+				}
+			},
+		});
 
-		return Response.json(message);
+		return new Response(responseStream);
 	} catch (error) {
 		console.error("Error generating product:", error);
-		return Response.json(
-			{ error: "Failed to generate product" },
-			{ status: 500 },
+		return new Response(
+			JSON.stringify({ error: "Failed to generate product" }),
+			{
+				status: 500,
+				headers: { "Content-Type": "application/json" },
+			},
 		);
 	}
 }
