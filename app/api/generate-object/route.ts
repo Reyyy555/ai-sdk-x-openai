@@ -52,10 +52,7 @@ export async function POST(req: Request) {
 
 
     // Return the data in a format compatible with AI SDK's useObject
-    return Response.json({
-      object: message.parsed,
-      completion: response.id,
-    })
+    return Response.json(message.parsed)
   } catch (error) {
     console.error("Error generating product:", error)
     return Response.json({ error: "Failed to generate product" }, { status: 500 })

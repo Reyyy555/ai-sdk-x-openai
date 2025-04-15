@@ -7,17 +7,17 @@ import { experimental_useObject as useObject } from "@ai-sdk/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { z } from "zod"
 
 export default function Home() {
   const [prompt, setPrompt] = useState("Messages during finals week.")
 
-  // Use the useObject hook with a custom API endpoint
   const { object, isLoading, error, submit } = useObject({
+    schema: z.unknown(),
     api: "/api/generate-object",
-    id: "notifications-generator",
   })
 
-  const notifications = object?.notifications || []
+  console.info("⚡[page.tsx:16] object:", object);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,28 +48,6 @@ export default function Home() {
         </form>
 
         {error && <div className="text-red-500 mb-4">Error: {error.message || "Something went wrong"}</div>}
-
-        <div className="space-y-4">
-          {notifications.map((notification, index) => (
-            <Card key={index}>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex justify-between">
-                  <span>{notification.name}</span>
-                  <span className="text-sm text-gray-500">{notification.minutesAgo}m ago</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>{notification.message}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {notifications.length === 0 && !isLoading && (
-          <div className="text-center text-gray-500 mt-8">
-            No notifications generated yet. Submit a prompt to get started.
-          </div>
-        )}
       </div>
     </main>
   )
