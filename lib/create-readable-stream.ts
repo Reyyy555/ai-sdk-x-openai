@@ -1,10 +1,13 @@
 import type OpenAI from "openai";
 import type { Stream } from "openai/streaming";
 
-export function createReadableStreamResponsesAPI(
-	stream: Stream<OpenAI.Responses.ResponseStreamEvent> & {
+export type OpenAiResponsesStream =
+	Stream<OpenAI.Responses.ResponseStreamEvent> & {
 		_request_id?: string | null;
-	},
+	};
+
+export function createReadableStreamResponsesAPI(
+	stream: OpenAiResponsesStream,
 ): ReadableStream<Uint8Array> {
 	return new ReadableStream({
 		async start(controller) {

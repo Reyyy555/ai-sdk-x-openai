@@ -1,12 +1,11 @@
 import OpenAI from "openai";
-import type { AllOrNone } from "@sohanemon/utils";
+import type { AllOrNone, SelectivePartial } from "@sohanemon/utils";
 import { zodResponseFormat } from "openai/helpers/zod";
 import type { z } from "zod";
 import type { ResponseFormatTextConfig } from "openai/src/resources/responses/responses.js";
 
-// Define options for creating a response stream.
-
-type RequestBody = OpenAI.Responses.ResponseCreateParamsNonStreaming &
+type OpenAiRequest = OpenAI.Responses.ResponseCreateParamsNonStreaming;
+type RequestBody = Omit<SelectivePartial<OpenAiRequest, "model">, "stream"> &
 	AllOrNone<{
 		schema: z.ZodObject<any>;
 		schemaName: string;
