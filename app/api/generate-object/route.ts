@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
-import type { ResponseFormatTextConfig } from "openai/src/resources/responses/responses.js";
 import { z } from "zod";
+import type { ResponseFormatTextConfig } from "openai/resources/responses/responses.mjs";
+import { createReadableStreamResponsesAPI } from "@/lib/create-readable-stream";
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
@@ -32,29 +33,8 @@ export async function POST(req: Request) {
 			input: prompt || "What is the weather like in Dhaka?",
 		});
 
-		const responseStream = new ReadableStream({
-			async start(controller) {
-				try {
-					for await (const event of stream) {
-						if (
-							event.type === "response.output_text.delta" ||
-							event.type === "response.refusal.delta"
-						) {
-							const chunk = event.delta;
-							controller.enqueue(new TextEncoder().encode(chunk));
-						} else if (event.type === "response.failed") {
-							controller.enqueue(
-								new TextEncoder().encode(`\nError: ${event.response.error}`),
-							);
-						} else if (event.type === "response.completed") {
-							controller.close();
-						}
-					}
-				} catch (err) {
-					controller.error(err);
-				}
-			},
-		});
+		// Reuse the extracted chunking function
+		const responseStream = createReadableStreamResponsesAPI(stream);
 
 		return new Response(responseStream);
 	} catch (error) {
