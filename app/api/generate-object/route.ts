@@ -9,11 +9,11 @@ const openai = new OpenAI({
 });
 
 const weatherSchema = z.object({
-	name: z.string().describe("Name of the city"),
-	description: z.string().describe("Description of the city"),
-	temperature: z.number().describe("Temperature in Celsius"),
-	humidity: z.number().describe("Humidity in percentage"),
-	windSpeed: z.number().describe("Wind speed in meters per second"),
+	// name: z.string().describe("Name of the city"),
+	description: z.string().describe("Description"),
+	// temperature: z.number().describe("Temperature in Celsius"),
+	// humidity: z.number().describe("Humidity in percentage"),
+	// windSpeed: z.number().describe("Wind speed in meters per second"),
 });
 
 export async function POST(req: Request) {
@@ -22,12 +22,17 @@ export async function POST(req: Request) {
 
 		const stream = await openai.responses.create({
 			model: "gpt-4o",
-			tools: [{ type: "web_search_preview" }],
+			tools: [
+				{
+					type: "file_search",
+					vector_store_ids: ["vs_nywcCRDxyDwo18z1xYLjvgx8"],
+				},
+			],
 			stream: true,
 			text: {
 				format: {
 					type: "json_schema",
-					...zodResponseFormat(weatherSchema, "weather_response").json_schema,
+					...zodResponseFormat(weatherSchema, "response").json_schema,
 				} as ResponseFormatTextConfig,
 			},
 			input: prompt || "What is the weather like in Dhaka?",
