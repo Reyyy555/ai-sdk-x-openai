@@ -1,0 +1,9 @@
+@custom-variant dark (&:is(.dark *));
+@custom-variant selected (&[data-selected="true"]);
+@custom-variant open (&[data-state="open"]);
+@custom-variant on (&[data-state="on"]);
+@custom-variant keyboard {
+  &:where(body[data-keyboard="open"] *) {
+    @slot;
+  }
+}

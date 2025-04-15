@@ -1,0 +1,23 @@
+/* fix layout shift of select box */
+html > body[style] {
+  margin-right: 0 !important;
+}
+
+/* fix drop-down hides sticky navigation-bar*/
+html > body[data-scroll-locked] {
+  overflow: clip !important;
+}
+
+a {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
